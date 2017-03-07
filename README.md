@@ -43,5 +43,5 @@ spec:
       template:
         location: pod.Spec.HostNetwork
         accept:
-        - true
+        - false
 ```
