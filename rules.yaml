@@ -1,0 +1,29 @@
+---
+
+apiVersion: extensions/v1beta1
+kind: ThirdPartyResource
+metadata:
+  name: config-rule.frankgreco
+description: "A specification for create rules on configuration files"
+versions:
+- name: v1
+
+---
+
+apiVersion: "frankgreco/v1"
+kind: ConfigRule
+metadata:
+  name: my-new-rule
+spec:
+  rules:
+  - issue:
+      title: "Pod enables hostNetwork"
+      body:
+        issue: "Due to security reasons, Pods cannot utilize the `hostNetwork` option in this Namespace."
+        code: "hostNetwork: true"
+        resolution: "Please disable this options and redeploy"
+      kind: "pod"
+      template:
+        location: pod.Spec.HostNetwork
+        accept:
+        - true
