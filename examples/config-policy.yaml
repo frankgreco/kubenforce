@@ -1,0 +1,18 @@
+---
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: k8s-config-policy
+  namespace: default
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        k8s-app: k8s-config-policy
+    spec:
+      containers:
+      - name: k8s-audit
+        image: fbgrecojr/k8s-config-policy:latest
+        imagePullPolicy: Always

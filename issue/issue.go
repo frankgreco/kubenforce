@@ -2,20 +2,24 @@ package issue
 
 import (
     "context"
-    "os"
-    "fmt"
 
     "github.com/google/go-github/github"
     "golang.org/x/oauth2"
-    "k8s-audit/config"
 )
 
-func Create(issue *config.Issue) {
+type Issue struct {
+    Owner    string
+    Repo     string
+    Title   *string
+    Body    *string
+    State   *string
+}
 
-    fmt.Print("token: " + os.Getenv("ACCESS_TOKEN"))
+func (issue *Issue) Create(){
+
     ctx := context.Background()
 	ts := oauth2.StaticTokenSource(
-		&oauth2.Token{AccessToken: "3388a9e50b8ebd590a896d21eb4bc4b338e5c2c9"},
+		&oauth2.Token{AccessToken: "< you're access token >"}, // <-- add this as a cmd flag
 	)
 	tc := oauth2.NewClient(ctx, ts)
 	client := github.NewClient(tc)

@@ -1,0 +1,9 @@
+---
+
+apiVersion: extensions/v1beta1
+kind: ThirdPartyResource
+metadata:
+  name: config-policy.k8s.io
+description: A specification for create rules on configuration files
+versions:
+- name: v1

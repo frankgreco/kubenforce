@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo docker build -t registry.gitlab.com/nm-kubernetes/k8s-audit:latest .
+sudo docker build -t fbgrecojr/k8s-config-policy:latest .

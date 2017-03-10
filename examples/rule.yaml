@@ -1,0 +1,21 @@
+---
+
+apiVersion: k8s.io/v1
+kind: ConfigPolicy
+metadata:
+  name: policy8
+  namespace: default
+spec:
+  apiVersion: v1
+  kind: Service
+  rules:
+  - remove: true
+    issue:
+      title: Service Exposes NodePort
+      body:
+        issue: Due to security reasons, you are not allowed to expose a `NodePort` in this namespace. Services must be accessed via a cluster virtual ip address.
+        code: "type: NodePort"
+        resolution: Please remove this option and redeploy
+    policy:
+      template: ".spec.type"
+      regex: "NodePort"
