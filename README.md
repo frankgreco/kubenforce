@@ -15,9 +15,6 @@ description: "A specification for create rules on configuration files"
 versions:
 - name: v1
 ```
-Here is how we might use this to create our custom kind. The purpose of our custom kind is to specify a series of rules we want to be applied to new configuration files that are applied to a k8s cluster.
-
-In this example, we specify that no pod in our cluster can expose a host network. By itself this wouldn't be feasible as a lot of the core components of k8s use the host network (e.g. kube-proxy). Hence, as part of the spec we can specify what namespaces we want to exclude from this rule. Optionally, you can specify what namespaces you want to apply the rule to.
 
 ```yaml
 ---
