@@ -34,7 +34,7 @@ metadata:
   labels:
     app: example
   annotations:
-    source: "https://github.com/frankgreco/k8s-config-policy"
+    source: "https://github.com/frankgreco/kubenforce"
 spec:
   selector:
     k8s-app: example

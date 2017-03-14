@@ -9,12 +9,12 @@ import (
 	"time"
 
 	"github.com/Sirupsen/logrus"
+	"github.com/frankgreco/kubenforce/spec"
+	"github.com/frankgreco/kubenforce/utils"
 	k8sapi "k8s.io/kubernetes/pkg/api"
 	unversionedAPI "k8s.io/kubernetes/pkg/api/unversioned"
 	"k8s.io/kubernetes/pkg/apis/extensions"
 	"k8s.io/kubernetes/pkg/client/unversioned"
-    "github.com/frankgreco/kubenforce/spec"
-    "github.com/frankgreco/kubenforce/utils"
 )
 
 const (
@@ -50,15 +50,15 @@ type Event struct {
 }
 
 func New(cfg Config) *Controller {
-    return &Controller{
-		logger:           logrus.WithField("pkg", "controller"),
-		Config:           cfg,
-		ConfigPolicies:   make(map[string]*spec.ConfigPolicy),
+	return &Controller{
+		logger:         logrus.WithField("pkg", "controller"),
+		Config:         cfg,
+		ConfigPolicies: make(map[string]*spec.ConfigPolicy),
 	}
 }
 
 func (c *Controller) Init() {
-    c.logger.Infof("Init started!")
+	c.logger.Infof("Init started!")
 	for {
 		//create TPR if it's not exists
 		err := c.initResource()
@@ -81,7 +81,7 @@ func (c *Controller) initResource() error {
 			return fmt.Errorf("Fail to create TPR: %v", err)
 		}
 	}
-    c.logger.Infof("TPC created!")
+	c.logger.Infof("TPC created!")
 	return nil
 }
 
@@ -95,13 +95,13 @@ func (c *Controller) createTPR() error {
 		},
 		Description: "my description",
 	}
-    c.logger.Infof("about to try create the resource")
+	c.logger.Infof("about to try create the resource")
 	_, err := c.Config.KubeCli.ThirdPartyResources().Create(tpr)
 	if err != nil {
-        c.logger.Infof("initial error")
+		c.logger.Infof("initial error")
 		return err
 	}
-    c.logger.Infof("TPC created!")
+	c.logger.Infof("TPC created!")
 	return nil
 }
 
@@ -117,9 +117,9 @@ func (c *Controller) Run() error {
 			switch event.Type {
 			case "ADDED":
 				c.logger.Infof("a new config policy was added: %s", event.Object.ObjectMeta.Name)
-                event.Object.RetroFit(c.Config.KubeCli)
+				event.Object.RetroFit(c.Config.KubeCli)
 
-            }
+			}
 		}
 	}()
 	return <-errCh
