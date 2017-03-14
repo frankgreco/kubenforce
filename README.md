@@ -1,4 +1,6 @@
-# k8s-config-policy
+# kubenforce
+
+## build
 
 ## introduction
 The purpose of this project to to audit Kubernetes resources. If k8s objects are deployed with blacklisted parameters, it will delete the object and open an issue on GitHub.
