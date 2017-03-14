@@ -5,9 +5,9 @@ import (
 	"os"
 
 	"github.com/Sirupsen/logrus"
-	"k8s-audit/controller"
-    "k8s-audit/utils"
 	"github.com/spf13/cobra"
+    "github.com/frankgreco/kubenforce/controller"
+    "github.com/frankgreco/kubenforce/utils"
 )
 
 var RootCmd = &cobra.Command{

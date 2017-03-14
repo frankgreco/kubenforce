@@ -9,13 +9,12 @@ import (
 	"time"
 
 	"github.com/Sirupsen/logrus"
-	"k8s-audit/spec"
-	"k8s-audit/utils"
-
 	k8sapi "k8s.io/kubernetes/pkg/api"
 	unversionedAPI "k8s.io/kubernetes/pkg/api/unversioned"
 	"k8s.io/kubernetes/pkg/apis/extensions"
 	"k8s.io/kubernetes/pkg/client/unversioned"
+    "github.com/frankgreco/kubenforce/spec"
+    "github.com/frankgreco/kubenforce/utils"
 )
 
 const (

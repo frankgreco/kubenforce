@@ -1,7 +1,7 @@
 package main
 
 import (
-    "k8s-audit/cmd"
+    "github.com/frankgreco/kubenforce/cmd"
 )
 
 func main() {

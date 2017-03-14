@@ -4,10 +4,10 @@ import (
     "regexp"
 
     "github.com/Sirupsen/logrus"
-	"k8s.io/kubernetes/pkg/api"
-	"k8s.io/kubernetes/pkg/api/unversioned"
+    "k8s.io/kubernetes/pkg/api"
+    "k8s.io/kubernetes/pkg/api/unversioned"
     client "k8s.io/kubernetes/pkg/client/unversioned"
-    "k8s-audit/issue"
+    "github.com/frankgreco/kubenforce/issue"
 )
 
 type ConfigPolicyList struct {
