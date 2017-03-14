@@ -1,13 +1,13 @@
 package cmd
 
 import (
-    "fmt"
+	"fmt"
 	"os"
 
 	"github.com/Sirupsen/logrus"
+	"github.com/frankgreco/kubenforce/controller"
+	"github.com/frankgreco/kubenforce/utils"
 	"github.com/spf13/cobra"
-    "github.com/frankgreco/kubenforce/controller"
-    "github.com/frankgreco/kubenforce/utils"
 )
 
 var RootCmd = &cobra.Command{
@@ -18,11 +18,11 @@ var RootCmd = &cobra.Command{
 		master, err := cmd.Flags().GetString("master")
 		cfg := newControllerConfig(master, "")
 		c := controller.New(cfg)
-        c.Init()
-        err = c.Run()
+		c.Init()
+		err = c.Run()
 		if err != nil {
-            logrus.Fatalf("damn it...: %s", err)
-        }
+			logrus.Fatalf("damn it...: %s", err)
+		}
 	},
 }
 
@@ -38,7 +38,7 @@ func init() {
 }
 
 func newControllerConfig(masterHost, ns string) controller.Config {
-    logrus.Infof("newControllerConfig")
+	logrus.Infof("newControllerConfig")
 	f := utils.GetFactory()
 	kubecli, err := f.Client()
 	if err != nil {

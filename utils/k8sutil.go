@@ -26,5 +26,5 @@ func IsKubernetesResourceAlreadyExistError(err error) bool {
 }
 
 func WatchResources(host, ns string, httpClient *http.Client) (*http.Response, error) {
-    return httpClient.Get(fmt.Sprintf("%s/apis/k8s.io/v1/configpolicies?watch=true",host))
+	return httpClient.Get(fmt.Sprintf("%s/apis/k8s.io/v1/configpolicies?watch=true", host))
 }

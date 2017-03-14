@@ -1,9 +1,16 @@
 # kubenforce
 
-## build
-
 ## introduction
 The purpose of this project to to audit Kubernetes resources. If k8s objects are deployed with blacklisted parameters, it will delete the object and open an issue on GitHub.
+
+## build
+
+requires go **v1.5** or later
+
+```sh
+$ git clone https://github.com/frankgreco/kubenforce $GOPATH/src/github.com/frankgreco/kubenforce/
+$ make
+```
 
 ## k8s api
 This project extends the Kubernetes (k8s) api by creating a `ThirdPartyResource` in which we can create our custom kind. Here is an example of how we create a `ThirdPartyResource`:
