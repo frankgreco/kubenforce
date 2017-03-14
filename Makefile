@@ -1,7 +1,7 @@
 SOURCEDIR=.
 SOURCES := $(shell find . -name '*.go')
 
-BINARY=main
+BINARY=kubenforce
 
 .DEFAULT_GOAL: $(BINARY)
 
